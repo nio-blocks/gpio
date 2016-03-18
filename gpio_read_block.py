@@ -1,7 +1,7 @@
 from threading import Lock
 from nio.block.base import Block
 from nio.util.discovery import discoverable
-from nio.properties import BoolProperty, VersionProperty
+from nio.properties import IntProperty, VersionProperty
 
 
 try:
@@ -45,7 +45,7 @@ class GPIODevice():
 @discoverable
 class GPIORead(Block):
 
-    pin = BoolProperty(default=0)
+    pin = IntProperty(default=0)
     version = VersionProperty('0.1.0')
 
     def __init__(self):
