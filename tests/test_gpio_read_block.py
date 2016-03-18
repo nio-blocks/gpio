@@ -27,14 +27,17 @@ class TestGPIORead(NIOBlockTestCase):
     def test_raspberry_pi(self):
         """Raspberry pi uses RPi.GPIO library."""
         blk = GPIORead()
-        self.configure_block(blk, {})
+        with patch('RPi.GPIO.setmode') as mock_setmode:
+            self.configure_block(blk, {})
         blk.start()
-        with patch('GPIO') as mock_gpio:
-            mock_gpio.input.return_value = True
-            blk.process_signals([Signal()])
-        blk.stop()
+        with patch('RPi.GPIO.setup') as mock_setup:
+            with patch('RPi.GPIO.input') as mock_input:
+                mock_input.return_value = True
+                blk.process_signals([Signal()])
+        with patch('RPi.GPIO.cleanup') as mock_cleanup:
+            blk.stop()
         self.assert_num_signals_notified(1)
         self.assertDictEqual(
             self.last_notified[DEFAULT_TERMINAL][0].to_dict(),
             {"value": True})
-        mock_gpio.input.assert_called_once_with(0)
+        mock_input.assert_called_once_with(0)

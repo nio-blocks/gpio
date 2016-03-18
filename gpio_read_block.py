@@ -1,14 +1,20 @@
+from threading import Lock
 from nio.block.base import Block
 from nio.util.discovery import discoverable
 from nio.properties import BoolProperty, VersionProperty
 
+
+try:
+    import RPi.GPIO as GPIO
+except:
+    # Let the block code load anyway so that som unit tests can run.
+    pass
 
 class GPIODevice():
 
     """Communicate with a device over GPIO."""
 
     def __init__(self, logger):
-        import RPi.GPIO as GPIO
         self.logger = logger
         GPIO.setmode(GPIO.BCM)
         self._gpio_lock = Lock()
@@ -26,7 +32,7 @@ class GPIODevice():
         with self._gpio_lock:
             GPIO.setup(pin, GPIO.IN) # TODO: don't call this every time
             value = GPIO.input(pin)
-            self.logger.debug("Value of GPIO pin {}: {}".format(pint, value))
+            self.logger.debug("Value of GPIO pin {}: {}".format(pin, value))
         return value
 
     def close(self):
