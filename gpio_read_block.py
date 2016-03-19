@@ -33,7 +33,7 @@ class GPIODevice():
             GPIO.setup(pin, GPIO.IN) # TODO: don't call this every time
             value = GPIO.input(pin)
             self.logger.debug("Value of GPIO pin {}: {}".format(pin, value))
-        return value
+        return bool(value)
 
     def close(self):
         try:
