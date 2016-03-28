@@ -2,7 +2,8 @@ from enum import Enum
 from threading import Lock
 from nio.block.base import Block
 from nio.util.discovery import discoverable
-from nio.properties import IntProperty, VersionProperty, SelectProperty
+from nio.properties import IntProperty, VersionProperty, SelectProperty, \
+    ObjectProperty, PropertyHolder
 
 
 try:
@@ -50,10 +51,17 @@ class GPIODevice():
             self.logger.warning("Failed to close GPIO", exc_info=True)
 
 
-class PullUpDown(Enum):
+class PullUpDownOptions(Enum):
     PUD_UP = True
     PUD_DOWN = False
     PUD_OFF = None
+
+
+class PullUpDown(PropertyHolder):
+    default = SelectProperty(PullUpDownOptions,
+                             title="Default Pull Resistor",
+                             default=PullUpDownOptions.PUD_OFF)
+    # TODO: add ability to select base on pin number
 
 
 @discoverable
@@ -61,9 +69,9 @@ class GPIORead(Block):
 
     pin = IntProperty(default=0)
     version = VersionProperty('0.1.0')
-    pull_up_down = SelectProperty(PullUpDown,
+    pull_up_down = ObjectProperty(PullUpDown,
                                   title="Pull Resistor Up/Down",
-                                  default=PullUpDown.PUD_OFF)
+                                  default=PullUpDown())
 
     def __init__(self):
         super().__init__()
@@ -84,7 +92,7 @@ class GPIORead(Block):
 
     def _read_gpio_pin(self, pin):
         try:
-            return self._gpio.read(pin, self.pull_up_down().value)
+            return self._gpio.read(pin, self.pull_up_down().default().value)
         except:
             self.logger.warning("Failed to read gpio pin: {}".format(pin),
                                 exc_info=True)
