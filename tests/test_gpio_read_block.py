@@ -17,7 +17,7 @@ class TestGPIORead(NIOBlockTestCase):
         blk.start()
         blk.process_signals([Signal()])
         blk.stop()
-        blk._gpio.read.assert_called_once_with(0)
+        blk._gpio.read.assert_called_once_with(0, None)
         self.assert_num_signals_notified(1)
         self.assertDictEqual(
             self.last_notified[DEFAULT_TERMINAL][0].to_dict(),
