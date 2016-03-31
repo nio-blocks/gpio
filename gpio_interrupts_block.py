@@ -48,7 +48,6 @@ class GPIOInterrupts(Block):
         self._gpio.interrupt(
             self._callback, self.pin(), self.pull_up_down().default().value)
 
-
     def stop(self):
         self._gpio.close()
         super().stop()

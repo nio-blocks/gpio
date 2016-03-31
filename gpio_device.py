@@ -57,15 +57,15 @@ class GPIODevice():
                 if pull_up_down:
                     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
                     # Use falling detection since we are pulled up
-                    GPIO.add_event_detect(pin, GPIO.FALLING)
+                    GPIO.add_event_detect(pin, GPIO.FALLING, bouncetime=bouncetime)
                 else:
                     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                     # Use rising detection since we are pulled down
-                    GPIO.add_event_detect(pin, GPIO.RISING)
+                    GPIO.add_event_detect(pin, GPIO.RISING, bouncetime=bouncetime)
             else:
                 GPIO.setup(pin, GPIO.IN)
-                GPIO.add_event_detect(pin, GPIO.BOTH)
-            GPIO.add_event_callback(pin, my_callback_one)
+                GPIO.add_event_detect(pin, GPIO.BOTH, bouncetime=bouncetime)
+            GPIO.add_event_callback(pin, callback)
             self.logger.debug(
                 "Set interrupt callback of GPIO pin {}".format(pin))
 
