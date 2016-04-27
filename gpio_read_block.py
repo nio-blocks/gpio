@@ -30,7 +30,7 @@ class PullUpDown(PropertyHolder):
 @discoverable
 class GPIORead(Block):
 
-    pin = IntProperty(default=0)
+    pin = IntProperty(default=0, title="Pin Number")
     version = VersionProperty('0.1.0')
     pull_up_down = ObjectProperty(PullUpDown,
                                   title="Pull Resistor Up/Down",
