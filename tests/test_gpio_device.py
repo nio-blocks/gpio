@@ -20,6 +20,18 @@ class TestGPIODevice(NIOBlockTestCase):
             gpio.close()
         self.assertDictEqual(value, {"value": True})
 
+    @skip("Only run on a raspbeery pi")
+    def test_write(self):
+        """Test that gpio write calls output with the specified value."""
+        with patch('RPi.GPIO.setmode') as mock_setmode:
+            gpio = GPIODevice()
+        with patch('RPi.GPIO.setup') as mock_setup:
+            with patch('RPi.GPIO.output') as mock_output:
+                value = gpio.write(0, False)
+                mock_output.called_once_with(0, False)
+        with patch('RPi.GPIO.cleanup') as mock_cleanup:
+            gpio.close()
+
     def _callback(self, pin):
         pass
 

@@ -41,8 +41,24 @@ class GPIODevice():
             else:
                 GPIO.setup(pin, GPIO.IN)
             value = GPIO.input(pin)
-            self.logger.debug("Value of GPIO pin {}: {}".format(pin, value))
+            self.logger.debug(
+                "Read value from GPIO pin {}: {}".format(pin, value))
         return bool(value)
+
+    def write(self, pin, value):
+        """Write bool value to a pin.
+
+        Args:
+            pin (int): the pin to write to
+            value (bool): boolean value to write to pin
+
+        """
+        with self._gpio_lock:
+            # TODO: don't call this every time
+            GPIO.setup(pin, GPIO.OUT)
+            GPIO.output(pin, value)
+            self.logger.debug(
+                "Wrote value to GPIO pin {}: {}".format(pin, value))
 
     def interrupt(self, callback, pin, pull_up_down=None, bouncetime=200):
         """Init interrupt callback function for pin.
