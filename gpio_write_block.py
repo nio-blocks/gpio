@@ -16,7 +16,7 @@ except:
 @discoverable
 class GPIOWrite(Block):
 
-    pin = IntProperty(default=0)
+    pin = IntProperty(default=0, title="Pin Number")
     value = Property(title='Write Value', default="{{ False }}")
     version = VersionProperty('0.1.0')
 
