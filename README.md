@@ -15,7 +15,7 @@ Read the value of a gpio pin.
 Properties
 ----------
 - **pin** (int): pin to read from
-- **pull_up_down**: direct `pin` to known state
+- **pull_up_down**: value of `pin` when it's logic level is neither high nor low
 
 Dependencies
 ------------
@@ -77,12 +77,12 @@ Each input signal triggers a pin write. The boolean `pin` value is added to the 
 
 GPIOInterrupt
 ==============
-Send an interrupt to the specified gpio pin.
+Notify an interrupt signal when the specified `pin` changes it's `value`.
 
 Properties
 ----------
 - **pin** (int): the pin to monitor for interrupts
-- **pull_up_down**: direct `pin` to known state
+- **pull_up_down**: value of `pin` when it's logic level is neither high nor low
 
 Dependencies
 ------------
