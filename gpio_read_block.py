@@ -1,11 +1,9 @@
 from enum import Enum
-from threading import Lock
 from nio.block.base import Block
 from nio.util.discovery import discoverable
 from nio.properties import IntProperty, VersionProperty, SelectProperty, \
     ObjectProperty, PropertyHolder
-from .gpio_device import GPIODevice
-
+from .gpio_device import GPIODevice, GPIOMode
 
 try:
     import RPi.GPIO as GPIO
@@ -18,11 +16,6 @@ class PullUpDownOptions(Enum):
     PUD_UP = True
     PUD_DOWN = False
     PUD_OFF = None
-
-
-class GPIOMode(Enum):
-    BCM = GPIO.BCM
-    BOARD = GPIO.BOARD
 
 
 class PullUpDown(PropertyHolder):

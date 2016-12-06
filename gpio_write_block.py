@@ -1,10 +1,9 @@
-from enum import Enum
-from threading import Lock
 from nio.block.base import Block
-from nio.util.discovery import discoverable
 from nio.properties import IntProperty, VersionProperty, Property
-from .gpio_device import GPIODevice
+from nio.properties import SelectProperty
+from nio.util.discovery import discoverable
 
+from .gpio_device import GPIODevice, GPIOMode
 
 try:
     import RPi.GPIO as GPIO
@@ -19,6 +18,7 @@ class GPIOWrite(Block):
     pin = IntProperty(default=0, title="Pin Number")
     value = Property(title='Write Value', default="{{ False }}")
     version = VersionProperty('0.1.0')
+    gpio_mode = SelectProperty(GPIOMode, title='GPIO mode', default='BCM')
 
     def __init__(self):
         super().__init__()
@@ -26,7 +26,7 @@ class GPIOWrite(Block):
 
     def configure(self, context):
         super().configure(context)
-        self._gpio = GPIODevice(self.logger)
+        self._gpio = GPIODevice(self.logger, self.gpio_mode())
 
     def stop(self):
         self._gpio.close()

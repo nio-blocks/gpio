@@ -1,3 +1,4 @@
+from enum import Enum
 from threading import Lock
 
 
@@ -6,6 +7,11 @@ try:
 except:
     # Let the block code load anyway so that som unit tests can run.
     pass
+
+
+class GPIOMode(Enum):
+    BCM = GPIO.BCM
+    BOARD = GPIO.BOARD
 
 
 class GPIODevice():
