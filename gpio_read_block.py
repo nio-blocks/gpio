@@ -20,6 +20,11 @@ class PullUpDownOptions(Enum):
     PUD_OFF = None
 
 
+class GPIOMode(Enum):
+    BCM = GPIO.BCM
+    BOARD = GPIO.BOARD
+
+
 class PullUpDown(PropertyHolder):
     default = SelectProperty(PullUpDownOptions,
                              title="Default Pull Resistor",
@@ -35,6 +40,7 @@ class GPIORead(Block):
     pull_up_down = ObjectProperty(PullUpDown,
                                   title="Pull Resistor Up/Down",
                                   default=PullUpDown())
+    gpio_mode = SelectProperty(GPIOMode, title='GPIO mode', default='BCM')
 
     def __init__(self):
         super().__init__()
@@ -42,7 +48,7 @@ class GPIORead(Block):
 
     def configure(self, context):
         super().configure(context)
-        self._gpio = GPIODevice(self.logger)
+        self._gpio = GPIODevice(self.logger, self.gpio_mode())
 
     def stop(self):
         self._gpio.close()

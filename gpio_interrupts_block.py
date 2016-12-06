@@ -1,5 +1,4 @@
 from enum import Enum
-from threading import Lock
 from nio.block.base import Block
 from nio.signal.base import Signal
 from nio.util.discovery import discoverable
@@ -21,6 +20,11 @@ class PullUpDownOptions(Enum):
     PUD_OFF = None
 
 
+class GPIOMode(Enum):
+    BCM = GPIO.BCM
+    BOARD = GPIO.BOARD
+
+
 class PullUpDown(PropertyHolder):
     default = SelectProperty(PullUpDownOptions,
                              title="Default Pull Resistor",
@@ -36,6 +40,7 @@ class GPIOInterrupts(Block):
     pull_up_down = ObjectProperty(PullUpDown,
                                   title="Pull Resistor Up/Down",
                                   default=PullUpDown())
+    gpio_mode = SelectProperty(GPIOMode, title='GPIO mode', default='BCM')
 
     def __init__(self):
         super().__init__()
@@ -49,7 +54,7 @@ class GPIOInterrupts(Block):
 
     def configure(self, context):
         super().configure(context)
-        self._gpio = GPIODevice(self.logger)
+        self._gpio = GPIODevice(self.logger, gpio_mode=self.gpio_mode())
 
     def stop(self):
         self._gpio.close()

@@ -1,9 +1,4 @@
-from enum import Enum
 from threading import Lock
-from nio.block.base import Block
-from nio.util.discovery import discoverable
-from nio.properties import IntProperty, VersionProperty, SelectProperty, \
-    ObjectProperty, PropertyHolder
 
 
 try:
@@ -12,13 +7,14 @@ except:
     # Let the block code load anyway so that som unit tests can run.
     pass
 
+
 class GPIODevice():
 
     """Communicate with a device over GPIO."""
 
-    def __init__(self, logger):
+    def __init__(self, logger, gpio_mode):
         self.logger = logger
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(gpio_mode)
         self._gpio_lock = Lock()
 
     def read(self, pin, pull_up_down=None):
@@ -84,7 +80,6 @@ class GPIODevice():
             GPIO.add_event_callback(pin, callback)
             self.logger.debug(
                 "Set interrupt callback of GPIO pin {}".format(pin))
-
 
     def close(self):
         try:
