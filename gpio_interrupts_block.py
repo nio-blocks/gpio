@@ -41,12 +41,15 @@ class GPIOInterrupts(Block):
         super().__init__()
         self._gpio = None
 
-    def configure(self, context):
-        super().configure(context)
-        self._gpio = GPIODevice(self.logger)
+    def start(self):
         # TODO: allow more than one pin to be configured per block
         self._gpio.interrupt(
             self._callback, self.pin(), self.pull_up_down().default().value)
+        super().start()
+
+    def configure(self, context):
+        super().configure(context)
+        self._gpio = GPIODevice(self.logger)
 
     def stop(self):
         self._gpio.close()
