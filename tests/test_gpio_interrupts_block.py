@@ -1,10 +1,10 @@
-from unittest import skip
-from unittest.mock import MagicMock, patch
-from nio.block.terminals import DEFAULT_TERMINAL
+from unittest.mock import patch
+
 from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
-from ..gpio_interrupts_block import GPIOInterrupts
+
 from ..gpio_device import GPIODevice
+from ..gpio_interrupts_block import GPIOInterrupts
 
 
 class TestGPIOInterrupts(NIOBlockTestCase):

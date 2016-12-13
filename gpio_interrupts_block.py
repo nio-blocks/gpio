@@ -4,6 +4,7 @@ from nio.util.discovery import discoverable
 from .gpio_base_block import GPIOBase
 
 
+
 @discoverable
 class GPIOInterrupts(GPIOBase):
 
