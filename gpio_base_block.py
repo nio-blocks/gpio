@@ -7,12 +7,6 @@ from nio.util.discovery import not_discoverable
 
 from .gpio_device import GPIODevice, GPIOMode
 
-try:
-    import RPi.GPIO as GPIO
-except:
-    # Let the block code load anyway so that som unit tests can run.
-    pass
-
 
 class PullUpDownOptions(Enum):
     PUD_UP = True

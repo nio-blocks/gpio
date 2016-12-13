@@ -1,12 +1,7 @@
 from enum import Enum
 from threading import Lock
 
-
-try:
-    import RPi.GPIO as GPIO
-except:
-    # Let the block code load anyway so that som unit tests can run.
-    pass
+import RPi.GPIO as GPIO
 
 
 class GPIOMode(Enum):
@@ -14,7 +9,7 @@ class GPIOMode(Enum):
     BOARD = GPIO.BOARD
 
 
-class GPIODevice():
+class GPIODevice:
 
     """Communicate with a device over GPIO."""
 
