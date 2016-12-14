@@ -10,7 +10,7 @@ from ..gpio_read_block import GPIORead
 
 class TestGPIORead(NIOBlockTestCase):
 
-    @patch(GPIORead.__module__ + ".GPIODevice", spec=GPIODevice)
+    @patch(GPIODevice.__module__ + ".GPIODevice")
     def test_process_signals(self, mock_gpio):
         """Signals pass through block unmodified."""
         blk = GPIORead()

@@ -9,7 +9,7 @@ from ..gpio_interrupts_block import GPIOInterrupts
 
 class TestGPIOInterrupts(NIOBlockTestCase):
 
-    @patch(GPIOInterrupts.__module__ + ".GPIODevice", spec=GPIODevice)
+    @patch(GPIODevice.__module__ + ".GPIODevice")
     def test_process_signals(self, mock_gpio):
         """Input signals don't do anything."""
         blk = GPIOInterrupts()
@@ -19,7 +19,7 @@ class TestGPIOInterrupts(NIOBlockTestCase):
         blk.stop()
         self.assert_num_signals_notified(0)
 
-    @patch(GPIOInterrupts.__module__ + ".GPIODevice", spec=GPIODevice)
+    @patch(GPIODevice.__module__ + ".GPIODevice")
     def test_interrupt_callback(self, mock_gpio):
         """Test that interrupt callback notifies a signal."""
         blk = GPIOInterrupts()

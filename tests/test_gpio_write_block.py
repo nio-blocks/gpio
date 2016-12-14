@@ -10,7 +10,7 @@ from ..gpio_write_block import GPIOWrite
 
 class TestGPIOWrite(NIOBlockTestCase):
 
-    @patch(GPIOWrite.__module__ + ".GPIODevice", spec=GPIODevice)
+    @patch(GPIODevice.__module__ + ".GPIODevice")
     def test_process_signals(self, mock_gpio):
         """Signals pass through block unmodified."""
         blk = GPIOWrite()
