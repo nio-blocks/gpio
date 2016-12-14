@@ -37,7 +37,7 @@ class GPIOBase(Block):
 
     def configure(self, context):
         super().configure(context)
-        self._gpio = GPIODevice(self.logger, gpio_mode=self.gpio_mode())
+        self._gpio = GPIODevice(self.logger, gpio_mode=self.gpio_mode().value)
 
     def stop(self):
         self._gpio.close()
