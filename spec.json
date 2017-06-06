@@ -1,0 +1,63 @@
+{
+  "nio/GPIOWrite": {
+    "Output": "Each input signal triggers a pin write. The boolean `pin` value is added to the signal.\n```\n{\n'input_attr': 'I was already here',\n'value': 'value_property'\n}\n```",
+    "Description": "Write to the specified gpio pin.",
+    "Category": "Hardware",
+    "Properties": {
+      "pin": {
+        "type": "int",
+        "description": "pin to write to"
+      },
+      "value": {
+        "type": "bool",
+        "description": "bool value to write to `pin`"
+      }
+    },
+    "Dependencies": [
+      "* [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)"
+    ],
+    "Input": "Any list of signals.",
+    "Commands": {},
+    "Version": "1.0.0"
+  },
+  "nio/GPIOInterrupt": {
+    "Output": "Each input signal triggers an interrupt. The `pin` is added to the signal.\n```\n{\n'input_attr': 'I was already here',\n'pin': 'pin_property'\n}\n```",
+    "Description": "Notify an interrupt signal when the specified `pin` changes it's `value`.",
+    "Category": "Hardware",
+    "Properties": {
+      "pin": {
+        "type": "int",
+        "description": "the pin to monitor for interrupts"
+      },
+      "pull_up_down": {
+        "description": "value of `pin` when it's logic level is neither high nor low"
+      }
+    },
+    "Dependencies": [
+      "* [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)"
+    ],
+    "Input": "Any list of signals.",
+    "Commands": {},
+    "Version": "1.0.0"
+  },
+  "nio/GPIORead": {
+    "Output": "Each input signal triggers a pin read. The boolean `pin` value is added to the signal.\n```\n{\n'input_attr': 'I was already here',\n'value': True\n}\n```",
+    "Description": "Read the value of a gpio pin.",
+    "Category": "Hardware",
+    "Properties": {
+      "pin": {
+        "type": "int",
+        "description": "pin to read from"
+      },
+      "pull_up_down": {
+        "description": "value of `pin` when it's logic level is neither high nor low"
+      }
+    },
+    "Dependencies": [
+      "* [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)"
+    ],
+    "Input": "Any list of signals.",
+    "Commands": {},
+    "Version": "1.0.0"
+  }
+}
