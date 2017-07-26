@@ -42,7 +42,7 @@
             }
         }
     },
-    "nio/GPIOInterrupt": {
+    "nio/GPIOInterrupts": {
         "Output": {
             "Description": "Each input signal triggers an interrupt. The `pin` is added to the signal.\n```\n{\n'input_attr': 'I was already here',\n'pin': 'pin_property'\n}\n```"
         },
