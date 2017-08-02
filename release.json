@@ -1,17 +1,17 @@
 {
-  "nio/GPIOWrite": {
-    "Version": "1.0.0",
-    "Reference": "github.com/nio-blocks/gpio.git@v1.0.0",
-    "Language": "Python"
-  },
   "nio/GPIOInterrupts": {
-    "Version": "1.0.0",
-    "Reference": "github.com/nio-blocks/gpio.git@v1.0.0",
-    "Language": "Python"
+    "language": "Python",
+    "version": "0.0.1",
+    "reference": "github.com/nio-blocks/gpio.git@v0.0.1"
   },
   "nio/GPIORead": {
-    "Version": "1.0.0",
-    "Reference": "github.com/nio-blocks/gpio.git@v1.0.0",
-    "Language": "Python"
+    "language": "Python",
+    "version": "0.0.1",
+    "reference": "github.com/nio-blocks/gpio.git@v0.0.1"
+  },
+  "nio/GPIOWrite": {
+    "language": "Python",
+    "version": "0.0.1",
+    "reference": "github.com/nio-blocks/gpio.git@v0.0.1"
   }
 }
