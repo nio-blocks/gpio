@@ -1,7 +1,7 @@
 {
   "nio/GPIOInterrupts": {
     "version": "0.1.0",
-    "description": "Read and write on a variety of gpio interfaces.",
+    "description": "Monitor a variety of gpio interfaces for interrupts.",
     "properties": {
       "pin": {
         "title": "Pin Number",
@@ -32,7 +32,7 @@
   },
   "nio/GPIORead": {
     "version": "0.1.0",
-    "description": "",
+    "description": "Read from a variety of gpio interfaces.",
     "properties": {
       "pin": {
         "title": "Pin Number",
@@ -63,7 +63,7 @@
   },
   "nio/GPIOWrite": {
     "version": "0.1.0",
-    "description": "",
+    "description": "Read from a variety of gpio interfaces.",
     "properties": {
       "pin": {
         "title": "Pin Number",
