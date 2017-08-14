@@ -1,7 +1,8 @@
 from unittest import skip
-from unittest.mock import MagicMock, patch
-from nio.block.terminals import DEFAULT_TERMINAL
+from unittest.mock import patch
+
 from nio.testing.block_test_case import NIOBlockTestCase
+
 from ..gpio_device import GPIODevice
 
 
