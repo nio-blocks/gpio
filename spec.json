@@ -1,26 +1,93 @@
 {
   "nio/GPIOInterrupts": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "version": "0.1.0",
+    "description": "Read and write on a variety of gpio interfaces.",
+    "properties": {
+      "pin": {
+        "title": "Pin Number",
+        "type": "IntType",
+        "description": "The pin to monitor for interrupts",
+        "default": 0
+      },
+      "pull_up_down": {
+        "title": "Pull Resistor Up/Down",
+        "type": "ObjectType",
+        "description": "Value of `pin` when it's logic level is neither high nor low.",
+        "default": {
+          "default": "PUD_OFF"
+        }
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "Each input signal triggers an interrupt. The `pin` is added to the signal."
+      }
+    },
     "commands": {}
   },
   "nio/GPIORead": {
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "properties": {
+      "pin": {
+        "title": "Pin Number",
+        "type": "IntType",
+        "description": "The pin to read from.",
+        "default": 0
+      },
+      "pull_up_down": {
+        "title": "Pull Resistor Up/Down",
+        "type": "ObjectType",
+        "description": "Value of `pin` when it's logic level is neither high nor low.",
+        "default": {
+          "default": "PUD_OFF"
+        }
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "Each input signal triggers a pin read. The boolean `pin` value is added to the signal."
+      }
+    },
     "commands": {}
   },
   "nio/GPIOWrite": {
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "properties": {
+      "pin": {
+        "title": "Pin Number",
+        "type": "IntType",
+        "description": "The pin to write to.",
+        "default": 0
+      },
+      "value": {
+        "title": "Write Value",
+        "type": "Type",
+        "description": "Bool value to write to `pin`.",
+        "default": "{{ False }}"
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "Each input signal triggers a pin write. The boolean `pin` value is added to the signal."
+      }
+    },
     "commands": {}
   }
 }

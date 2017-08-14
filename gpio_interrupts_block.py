@@ -1,12 +1,11 @@
 from enum import Enum
-from threading import Lock
+
 from nio.block.base import Block
 from nio.signal.base import Signal
-from nio.util.discovery import discoverable
 from nio.properties import IntProperty, VersionProperty, SelectProperty, \
     ObjectProperty, PropertyHolder
-from .gpio_device import GPIODevice
 
+from .gpio_device import GPIODevice
 
 try:
     import RPi.GPIO as GPIO
@@ -28,7 +27,6 @@ class PullUpDown(PropertyHolder):
     # TODO: add ability to select base on pin number
 
 
-@discoverable
 class GPIOInterrupts(Block):
 
     pin = IntProperty(default=0, title="Pin Number")

@@ -1,10 +1,7 @@
-from enum import Enum
-from threading import Lock
 from nio.block.base import Block
-from nio.util.discovery import discoverable
 from nio.properties import IntProperty, VersionProperty, Property
-from .gpio_device import GPIODevice
 
+from .gpio_device import GPIODevice
 
 try:
     import RPi.GPIO as GPIO
@@ -13,7 +10,6 @@ except:
     pass
 
 
-@discoverable
 class GPIOWrite(Block):
 
     pin = IntProperty(default=0, title="Pin Number")

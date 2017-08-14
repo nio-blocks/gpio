@@ -1,16 +1,11 @@
-from enum import Enum
 from threading import Lock
-from nio.block.base import Block
-from nio.util.discovery import discoverable
-from nio.properties import IntProperty, VersionProperty, SelectProperty, \
-    ObjectProperty, PropertyHolder
-
 
 try:
     import RPi.GPIO as GPIO
 except:
     # Let the block code load anyway so that som unit tests can run.
     pass
+
 
 class GPIODevice():
 
@@ -73,18 +68,19 @@ class GPIODevice():
                 if pull_up_down:
                     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
                     # Use falling detection since we are pulled up
-                    GPIO.add_event_detect(pin, GPIO.FALLING, bouncetime=bouncetime)
+                    GPIO.add_event_detect(
+                        pin, GPIO.FALLING, bouncetime=bouncetime)
                 else:
                     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                     # Use rising detection since we are pulled down
-                    GPIO.add_event_detect(pin, GPIO.RISING, bouncetime=bouncetime)
+                    GPIO.add_event_detect(
+                        pin, GPIO.RISING, bouncetime=bouncetime)
             else:
                 GPIO.setup(pin, GPIO.IN)
                 GPIO.add_event_detect(pin, GPIO.BOTH, bouncetime=bouncetime)
             GPIO.add_event_callback(pin, callback)
             self.logger.debug(
                 "Set interrupt callback of GPIO pin {}".format(pin))
-
 
     def close(self):
         try:
