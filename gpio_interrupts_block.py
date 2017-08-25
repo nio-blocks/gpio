@@ -1,6 +1,6 @@
 from enum import Enum
 
-from nio.block.base import Block
+from nio import GeneratorBlock
 from nio.signal.base import Signal
 from nio.properties import IntProperty, VersionProperty, SelectProperty, \
     ObjectProperty, PropertyHolder
@@ -27,7 +27,7 @@ class PullUpDown(PropertyHolder):
     # TODO: add ability to select base on pin number
 
 
-class GPIOInterrupts(Block):
+class GPIOInterrupts(GeneratorBlock):
 
     pin = IntProperty(default=0, title="Pin Number")
     version = VersionProperty('0.1.0')
