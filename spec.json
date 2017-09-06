@@ -2,6 +2,9 @@
   "nio/GPIOInterrupts": {
     "version": "0.1.0",
     "description": "Monitor a variety of gpio interfaces for interrupts.",
+    "categories": [
+      "Hardware"
+    ],
     "properties": {
       "pin": {
         "title": "Pin Number",
@@ -33,6 +36,9 @@
   "nio/GPIORead": {
     "version": "0.1.0",
     "description": "Read from a variety of gpio interfaces.",
+    "categories": [
+      "Hardware"
+    ],
     "properties": {
       "pin": {
         "title": "Pin Number",
@@ -64,6 +70,9 @@
   "nio/GPIOWrite": {
     "version": "0.1.0",
     "description": "Read from a variety of gpio interfaces.",
+    "categories": [
+      "Hardware"
+    ],
     "properties": {
       "pin": {
         "title": "Pin Number",
