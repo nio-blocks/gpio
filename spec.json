@@ -1,7 +1,7 @@
 {
   "nio/GPIOInterrupts": {
     "version": "0.1.0",
-    "description": "Monitor a variety of gpio interfaces for interrupts.",
+    "description": "Monitor a variety of GPIO interfaces for interrupts.",
     "categories": [
       "Hardware"
     ],
@@ -35,7 +35,7 @@
   },
   "nio/GPIORead": {
     "version": "0.1.0",
-    "description": "Read from a variety of gpio interfaces.",
+    "description": "Read from a variety of GPIO interfaces.",
     "categories": [
       "Hardware"
     ],
@@ -69,7 +69,7 @@
   },
   "nio/GPIOWrite": {
     "version": "0.1.0",
-    "description": "Read from a variety of gpio interfaces.",
+    "description": "Read from a variety of GPIO interfaces.",
     "categories": [
       "Hardware"
     ],
@@ -83,7 +83,7 @@
       "value": {
         "title": "Write Value",
         "type": "Type",
-        "description": "Bool value to write to `pin`.",
+        "description": "Boolean value to write to `pin`.",
         "default": "{{ False }}"
       }
     },
