@@ -23,7 +23,7 @@
     },
     "inputs": {
       "default": {
-        "description": "Any list of signals."
+        "description": "None."
       }
     },
     "outputs": {
