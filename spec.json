@@ -21,11 +21,7 @@
         }
       }
     },
-    "inputs": {
-      "default": {
-        "description": "None."
-      }
-    },
+    "inputs": {},
     "outputs": {
       "default": {
         "description": "Each input signal triggers an interrupt. The `pin` is added to the signal."
