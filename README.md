@@ -1,10 +1,10 @@
 GPIOInterrupts
 ==============
-Read and write on a variety of gpio interfaces.
+The Interrupts block monitors a GPIO pin for interrupts.
 
 Properties
 ----------
-- **pin**: The pin to monitor for interrupts
+- **pin**: The GPIO BCM pin to monitor for interrupts.
 - **pull_up_down**: Value of `pin` when it's logic level is neither high nor low.
 
 Inputs
@@ -13,10 +13,15 @@ Inputs
 
 Outputs
 -------
-- **default**: Each input signal triggers an interrupt. The `pin` is added to the signal.
+- **default**: At an interupt, the 'pin' is added to the signal.
 
 Commands
 --------
+None
+
+Dependencies
+------------
+* [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)
 
 Output Example
 --------------
@@ -27,13 +32,13 @@ Output Example
 }
 ```
 
-
 GPIORead
 ========
+The Read block reads from a variety of gpio interfaces. A 'pin' read is triggered by any incoming signal.
 
 Properties
 ----------
-- **pin**: The pin to read from.
+- **pin**: The GPIO BCM pin to read.
 - **pull_up_down**: Value of `pin` when it's logic level is neither high nor low.
 
 Inputs
@@ -46,6 +51,7 @@ Outputs
 
 Commands
 --------
+None
 
 Dependencies
 ------------
@@ -64,14 +70,14 @@ Output Example
 }
 ```
 
-
 GPIOWrite
 =========
+The Write block emits a signal containing a boolean value to a specified GPIO pin.
 
 Properties
 ----------
-- **pin**: The pin to write to.
-- **value**: Bool value to write to `pin`.
+- **pin**: The GPIO BCM pin to write.
+- **value**: Boolean value to write to `pin`.
 
 Inputs
 ------
@@ -83,6 +89,7 @@ Outputs
 
 Commands
 --------
+None
 
 Dependencies
 ------------
@@ -100,3 +107,4 @@ Output Example
   'value': 'value_property'
 }
 ```
+
