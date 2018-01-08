@@ -68,7 +68,7 @@
     "commands": {}
   },
   "nio/GPIOWrite": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "The Write block emits a signal containing a boolean value to a specified GPIO pin.",
     "categories": [
       "Hardware"

@@ -14,7 +14,7 @@ class GPIOWrite(Block):
 
     pin = IntProperty(default=0, title="Pin Number")
     value = Property(title='Write Value', default="{{ False }}")
-    version = VersionProperty('0.1.0')
+    version = VersionProperty("0.1.1")
 
     def __init__(self):
         super().__init__()
