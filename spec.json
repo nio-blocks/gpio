@@ -1,7 +1,7 @@
 {
   "nio/GPIOInterrupts": {
     "version": "0.1.0",
-    "description": "Monitor a variety of gpio interfaces for interrupts.",
+    "description": "The Interrupts block monitors a GPIO pin for interrupts.",
     "categories": [
       "Hardware"
     ],
@@ -9,7 +9,7 @@
       "pin": {
         "title": "Pin Number",
         "type": "IntType",
-        "description": "The pin to monitor for interrupts",
+        "description": "The GPIO BCM pin to monitor for interrupts.",
         "default": 0
       },
       "pull_up_down": {
@@ -28,14 +28,14 @@
     },
     "outputs": {
       "default": {
-        "description": "Each input signal triggers an interrupt. The `pin` is added to the signal."
+        "description": "At an interupt, the 'pin' is added to the signal."
       }
     },
     "commands": {}
   },
   "nio/GPIORead": {
     "version": "0.1.0",
-    "description": "Read from a variety of gpio interfaces.",
+    "description": "The Read block reads from a variety of gpio interfaces. A 'pin' read is triggered by any incoming signal.",
     "categories": [
       "Hardware"
     ],
@@ -43,7 +43,7 @@
       "pin": {
         "title": "Pin Number",
         "type": "IntType",
-        "description": "The pin to read from.",
+        "description": "The GPIO BCM pin to read.",
         "default": 0
       },
       "pull_up_down": {
@@ -69,7 +69,7 @@
   },
   "nio/GPIOWrite": {
     "version": "0.1.0",
-    "description": "Read from a variety of gpio interfaces.",
+    "description": "The Write block emits a signal containing a boolean value to a specified GPIO pin.",
     "categories": [
       "Hardware"
     ],
@@ -77,13 +77,13 @@
       "pin": {
         "title": "Pin Number",
         "type": "IntType",
-        "description": "The pin to write to.",
+        "description": "The GPIO BCM pin to write.",
         "default": 0
       },
       "value": {
         "title": "Write Value",
         "type": "Type",
-        "description": "Bool value to write to `pin`.",
+        "description": "Boolean value to write to `pin`.",
         "default": "{{ False }}"
       }
     },
