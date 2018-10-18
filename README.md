@@ -2,6 +2,8 @@ GPIOInterrupts
 ==============
 The Interrupts block monitors a GPIO pin for interrupts.
 
+Documentation on common GPIO pinout can be found at: https://pinout.xyz/#
+
 Properties
 ----------
 - **pin**: The GPIO BCM pin to monitor for interrupts.
@@ -35,6 +37,8 @@ Output Example
 GPIORead
 ========
 The Read block reads from a variety of gpio interfaces. A 'pin' read is triggered by any incoming signal.
+
+Documentation on common GPIO pinout can be found at: https://pinout.xyz/#
 
 Properties
 ----------
@@ -73,6 +77,8 @@ Output Example
 GPIOWrite
 =========
 The Write block emits a signal containing a boolean value to a specified GPIO pin.
+
+Documentation on common GPIO pinout can be found at: https://pinout.xyz/#
 
 Properties
 ----------
